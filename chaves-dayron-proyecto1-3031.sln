@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chaves-dayron-proyecto1-3031", "chaves-dayron-proyecto1-3031.csproj", "{76FBCE4B-A713-4E6E-A0A4-201EE05BADA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76FBCE4B-A713-4E6E-A0A4-201EE05BADA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FBCE4B-A713-4E6E-A0A4-201EE05BADA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FBCE4B-A713-4E6E-A0A4-201EE05BADA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FBCE4B-A713-4E6E-A0A4-201EE05BADA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65BACA18-9CCD-4A4E-8261-72C84A254169}
+	EndGlobalSection
+EndGlobal

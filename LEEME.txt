@@ -1,0 +1,55 @@
+    Seccion Notificaciones de Email
+    ############################
+    Para implementar este rubro se ha utilizado Mailtrap.
+    La bandeja es simulada, y debe ingresar aqui para verla:
+    https://mailtrap.io/signin
+    user: temp.787654356@gmail.com
+    pass: U^M<N`rFU!cz@K50u&_qnFz]h5\GK8*S9twt
+
+    Detalles del Entorno
+    ####################
+    
+    Dispositivo
+    -----------
+    Laptop Dell Inspiron 3585
+    Procesador	AMD Ryzen 3 2300U with Radeon Vega Mobile Gfx     2.00 GHz  (2 procesadores)
+    RAM instalada	8,00 GB
+    Tipo de sistema	Sistema operativo de 64 bits, procesador basado en x64
+
+    OS
+    --
+    Edición	Windows 11 Pro
+    Versión	23H2
+    Versión del sistema operativo	22631.3880
+    Experiencia	Windows Feature Experience Pack 1000.22700.1020.0
+    (Maquina Virtual)
+
+    IDE
+    ---
+    Microsoft Visual Studio Community 2022 (64 bits) - Current
+    Versión 17.10.4
+
+    DB
+    --
+    SQL Server Management Studio				                    20.2.30.0
+    SQL Server Management Objects (SMO)						        17.100.40.0+f57178c95d4376485d3f597f2b829bbd6f80fd6f
+    Microsoft T-SQL Parser						                    17.2.3.1+46115224c373754fdd41516eaae1386cabc4819e.46115224c373754fdd41516eaae1386cabc4819e
+    Microsoft Analysis Services Client Tools						20.0.3.0
+    Microsoft Data SqlClient (MDS)						            5.1.5
+    Microsoft SQL Server Data-Tier Application Framework (DacFX)	162.3.566.1+89d89fe935702c8836ebaf6a03cf61b85118f847.89d89fe935702c8836ebaf6a03cf61b85118f847
+    Microsoft .NET Framework						                4.0.30319.42000
+    Operating System						                        10.0.22631
+
+    Proyecto
+    --------
+    Plantilla MVC con .Net Framework 4.7.2
+
+    Navegador Web
+    -------------
+    Cromite Versión 126.0.6478.186 (Build oficial) (64 bits)
+    ^
+    |___ Fork de Proyecto Chromium (Basado en Chrome)
+
+    Paquetes de Nuget
+    ------------------
+    Ver packages.config

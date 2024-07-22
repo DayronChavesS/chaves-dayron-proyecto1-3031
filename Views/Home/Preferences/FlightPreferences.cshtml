@@ -1,0 +1,219 @@
+﻿@model chaves_dayron_proyecto1_3031.Models.Preferences
+
+@{
+    ViewBag.Title = "View";
+}
+
+@{
+    string currentDate = DateTime.Today.ToString("yyyy-MM-dd");
+
+    List<SelectListItem> listOrigin = new List<SelectListItem>();
+    listOrigin.Add(new SelectListItem
+    {
+        Text = "Aeropuerto de Guanacaste",
+        Value = "LIR"
+    });
+    listOrigin.Add(new SelectListItem
+    {
+        Text = "Aeropuerto Internacional de Limón",
+        Value = "LIO",
+        Selected = true
+    });
+    listOrigin.Add(new SelectListItem
+    {
+        Text = "Aeropuerto Internacional Juan Santamaría",
+        Value = "SJO"
+    });
+    listOrigin.Add(new SelectListItem
+    {
+        Text = "Aeropuerto Internacional Tobías Bolaños",
+        Value = "SYQ"
+    });
+
+    List<SelectListItem> listClass = new List<SelectListItem>();
+    listClass.Add(new SelectListItem
+    {
+        Text = "Economico",
+        Value = "ECONOMY"
+    });
+    listClass.Add(new SelectListItem
+    {
+        Text = "Premium",
+        Value = "PREMIUM_ECONOMY"
+    });
+    listClass.Add(new SelectListItem
+    {
+        Text = "Negocios",
+        Value = "BUSSINESS",
+        Selected = true
+    });
+    listClass.Add(new SelectListItem
+    {
+        Text = "Primera Clase",
+        Value = "FIRST"
+    });
+
+    List<SelectListItem> listDestination = new List<SelectListItem>();
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Hartsfield–Jackson Atlanta International Airport",
+        Value = "ATL"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Dallas/Fort Worth International Airport",
+        Value = "DFW",
+        Selected = true
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Denver International Airport",
+        Value = "DEN"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Los Angeles International Airport",
+        Value = "LAX"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "O'Hare International Airport",
+        Value = "ORD"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "John F. Kennedy International Airport",
+        Value = "JFK",
+        Selected = true
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Orlando International Airport",
+        Value = "MCO"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Harry Reid International Airport",
+        Value = "LAS"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Charlotte Douglas International Airport",
+        Value = "CLT"
+    });
+    listDestination.Add(new SelectListItem
+    {
+        Text = "Miami International Airport",
+        Value = "MIA"
+    });
+}
+
+
+<h2>Preferencias de vuelo</h2>
+<p>Esta informacion sera utilizada para personalizar los resultados del catalogo de vuelos.</p>
+<a style="color:darkgray"><i><small>Puede dejar espacios en blanco para aumentar el numero de resultados.</small></i></a>
+<hr />
+
+@using (Html.BeginForm("UpdateFlightPreferences", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <a style="color:red">*</a>@Html.LabelFor(model => model.Origin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Origin, listOrigin)
+                @*@Html.EditorFor(model => model.Origin, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a style="color:red">*</a>@Html.LabelFor(model => model.Destination, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Destination, listDestination)
+                @*@Html.EditorFor(model => model.Destination, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Destination, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a style="color:red">*</a>@Html.LabelFor(model => model.DepartureDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(Model => Model.DepartureDate, new { type = "date", min = @currentDate })
+            @Html.ValidationMessageFor(model => model.DepartureDate, "", new { @class = "text-danger" })
+        </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(Model => Model.ReturnDate, new { type = "date", min = @currentDate })
+                @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a style="color:red">*</a>@Html.LabelFor(model => model.Adults, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adults, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adults, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Children, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Children, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Children, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Infants, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Infants, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Infants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TravelClass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TravelClass, listClass, "-- Seleccione una clase --")
+                @*@Html.EditorFor(model => model.TravelClass, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.TravelClass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NonStop, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.NonStop)
+                    @Html.ValidationMessageFor(model => model.NonStop, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxPrice, htmlAttributes: new { @class = "control-label col-md-2" })<a> (₡)</a>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar Preferencias" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

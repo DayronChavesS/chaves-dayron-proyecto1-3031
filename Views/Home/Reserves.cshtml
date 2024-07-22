@@ -1,0 +1,206 @@
+﻿@model IEnumerable<chaves_dayron_proyecto1_3031.Models.Reserve>
+
+@{
+    ViewBag.Title = "Reserves";
+}
+
+<h2>Carrito de Compras</h2>
+<p>Haga click en Confirmar Reserva para efectuar el pago.</p>
+
+<table class="table" id="tabla-carrito">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RsrvId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.InCart == true)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RsrvId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @using (Html.BeginForm("ConfirmarReserva", "Home", FormMethod.Post))
+                    {
+                        @Html.Hidden("RsrvId", item.RsrvId)
+                        @Html.Hidden("UserId", item.UserId)
+                        @Html.Hidden("Origin", item.Origin)
+                        @Html.Hidden("Destination", item.Destination)
+                        @Html.Hidden("DepartureDate", item.DepartureDate)
+                        @Html.Hidden("ArrivalDate", item.ArrivalDate)
+                        @Html.Hidden("Class", item.Class)
+                        @Html.Hidden("Price", item.Price)
+                        @Html.Hidden("InCart", item.InCart)
+                        @Html.Hidden("InHistory", item.InHistory)
+                        <input type="Submit" value="Confirmar Reserva" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<br />
+<br />
+<hr />
+<br />
+<br />
+
+<h2>Historial</h2>
+<p>Estas son todas sus reservas confirmadas.</p>
+
+<h3>Reservas vigentes</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.InHistory == true)
+        {
+            DateTime dt1 = DateTime.Parse(item.DepartureDate);
+            DateTime dt2 = DateTime.Today;
+
+            if (dt1.Date >= dt2.Date)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartureDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+
+<h3>Reservas vencidas</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.InHistory == true)
+        {
+            DateTime dt1 = DateTime.Parse(item.DepartureDate);
+            DateTime dt2 = DateTime.Today;
+
+            if (dt1.Date < dt2.Date)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartureDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<chaves_dayron_proyecto1_3031.Models.Flight>
+
+@{
+    ViewBag.Title = "Travels";
+}
+
+<h2>Catalogo de Viajes</h2>
+<p>Estos son los vuelos que se encuentran disponibles actualmente.</p>
+<a style="color:darkgray"><i><small>Los resultados pueden variar segun las preferencias de vuelo.</small></i></a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.departureLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departureAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivalLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivalAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cabinType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberOfBookableSeats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oneWay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grandTotal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrivalLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrivalAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cabinType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfBookableSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.oneWay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grandTotal)
+            </td>
+            <td>
+                @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                {
+                    @Html.Hidden("departureLocation", item.departureLocation)
+                    @Html.Hidden("departureAt", item.departureAt)
+                    @Html.Hidden("arrivalLocation", item.arrivalLocation)
+                    @Html.Hidden("arrivalAt", item.arrivalAt)
+                    @Html.Hidden("cabinType", item.cabinType)
+                    @Html.Hidden("numberOfBookableSeats", item.numberOfBookableSeats)
+                    @Html.Hidden("oneWay", item.oneWay)
+                    @Html.Hidden("grandTotal", item.grandTotal)
+                    <input type="Submit" value="Añadir al carrito" class="btn btn-default" />
+                }
+            </td>
+        </tr>
+    }
+
+</table>
