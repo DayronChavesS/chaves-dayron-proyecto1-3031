@@ -32,7 +32,7 @@ namespace chaves_dayron_proyecto1_3031.Misc
                 ", en el Aeropuerto " + rsrvData.Origin +
                 ", con destino al Aeropuerto " + rsrvData.Destination + ".</p><br/><br/><br/><br/>" +
                 "<hr/>" +
-                "<p><b>Clase: " + rsrvData.Class + "</b></p>"+
+                "<p><b>Clase: " + rsrvData.Class + "</b></p>" +
                 "<p><b>Precio: " + rsrvData.Price + "</b></p>" +
                 "<hr/>" +
                 "<br/><br/><small><i>Gracias por confiar en Tu Empresa de Vuelos.<i></small><br/>" +

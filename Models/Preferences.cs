@@ -46,6 +46,7 @@ namespace chaves_dayron_proyecto1_3031.Models
         public bool NonStop { get; set; }
 
         [Required(ErrorMessage = "Complete este campo.")]
+        [Range(0, 2147483647, ErrorMessage = "Rango admitido: 0 - 2147483647.")]
         [Display(Name = "Precio maximo: ")]
         public int MaxPrice { get; set; }
     }

@@ -115,7 +115,7 @@ namespace chaves_dayron_proyecto1_3031.Controllers
             //manejo de nulos con operador fusión nula.
             newPreferences.ReturnDate = newPreferences.ReturnDate ?? "";
             newPreferences.TravelClass = newPreferences.TravelClass ?? "";
-            
+
             dbcmd.UpdateFlightPreferences(newPreferences);
             return Redirect("PreferencesIndex");
         }

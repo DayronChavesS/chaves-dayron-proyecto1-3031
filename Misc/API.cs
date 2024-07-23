@@ -9,6 +9,16 @@ using System.Threading.Tasks;
 
 namespace chaves_dayron_proyecto1_3031.Misc
 {
+    /*
+     ISSUES:
+     - La API suele fallar cerca de las 12 media noche cuando el DepartureDate es [HOY].
+     Esto es un bug por parte del equipo de Amadeus.
+
+     - A veces la API entrega ofertas que contienen destinos finales diferentes. He inspeccionado
+       Multiples veces los segmentos de los itinerarios y no hay rastro del destino configurado
+       Por el usuario. Se desconoce la razon de este comportamiento.
+     */
+
     public class API
     {
         //Credenciales de la API
@@ -29,9 +39,9 @@ namespace chaves_dayron_proyecto1_3031.Misc
             request.Content = new StringContent($"grant_type=client_credentials&client_id={API_KEY}&client_secret={API_SECRET}",
                                                 Encoding.UTF8,
                                                 "application/x-www-form-urlencoded");
-            
+
             //enviamos la solicitud de token para hacer consultas posteriormente
-            HttpResponseMessage response =  client.SendAsync(request);
+            HttpResponseMessage response = await client.SendAsync(request);
 
             //obtenemos la respuesta y la procesamos
             string apiResponse = response.Content.ReadAsStringAsync().Result;
@@ -58,14 +68,14 @@ namespace chaves_dayron_proyecto1_3031.Misc
              https://developers.amadeus.com/self-service/category/flights/api-doc/flight-offers-search/api-reference
              */
             var parameters = $"?originLocationCode={userSettigs.Origin}&destinationLocationCode={userSettigs.Destination}&departureDate={userSettigs.DepartureDate}&adults={userSettigs.Adults}&currencyCode=CRC&max=250&nonStop={userSettigs.NonStop.ToString().ToLower()}";
-            if (userSettigs.Children != 0)      {   parameters += $"&children=  {userSettigs.Children}";    }
-            if (userSettigs.Infants != 0)       {   parameters += $"&infants=   {userSettigs.Infants}";     }
-            if (userSettigs.TravelClass != "")  {   parameters += $"&travelClass={userSettigs.TravelClass}";}
-            if (userSettigs.MaxPrice != 0)      {   parameters += $"&maxPrice=  {userSettigs.MaxPrice}";    }
-            if (userSettigs.ReturnDate != "")   {   parameters += $"&returnDate={userSettigs.ReturnDate}";  }
+            if (userSettigs.Children != 0) { parameters += $"&children={userSettigs.Children}"; }
+            if (userSettigs.Infants != 0) { parameters += $"&infants={userSettigs.Infants}"; }
+            if (userSettigs.TravelClass != "") { parameters += $"&travelClass={userSettigs.TravelClass}"; }
+            if (userSettigs.MaxPrice != 0) { parameters += $"&maxPrice={userSettigs.MaxPrice}"; }
+            if (userSettigs.ReturnDate != "") { parameters += $"&returnDate={userSettigs.ReturnDate}"; }
 
             string token = await GetToken();
-            
+
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
 
